@@ -27,7 +27,9 @@
             <td th:text="${user.email}">Brand</td>
             <td th:text="${user.empresa}">Made in</td>
             <td th:text="${user.telefone}">Price</td>
-            <td><a th:href="@{/formUpdate/{id}(id=${user.id})}" class="btn btn-primary">Atualizar</a> </td>
+            <td><a th:href="@{/formUpdate/{id}(id=${user.id})}" class="btn btn-primary">Atualizar</a>
+            <a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-danger">Deletar</a> </td>
+
         </tr>
         </tbody>
     </table>

@@ -49,4 +49,12 @@ public class UserController {
         model.addAttribute("user", user);
         return "userUpdate";
     }
+
+    //Metodo para deletar usuário, Talvez seja melhor so criar uma variável booleana, ativo, para a regra de negócios??
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable (value = "id") long id){
+        this.userService.deleteUserById(id);
+        return "redirect:/userDB";
+
+    }
 }
