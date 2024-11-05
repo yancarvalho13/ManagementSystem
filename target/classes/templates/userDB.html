@@ -12,11 +12,11 @@
     <table border="1" cellpadding="10">o
         <thead>
         <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Brand</th>
-            <th>Made In</th>
-            <th>Price</th>
+            <th>User ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Empresa</th>
+            <th>Telefone</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -27,6 +27,7 @@
             <td th:text="${user.email}">Brand</td>
             <td th:text="${user.empresa}">Made in</td>
             <td th:text="${user.telefone}">Price</td>
+            <td><a th:href="@{/formUpdate/{id}(id=${user.id})}" class="btn btn-primary">Atualizar</a> </td>
         </tr>
         </tbody>
     </table>
