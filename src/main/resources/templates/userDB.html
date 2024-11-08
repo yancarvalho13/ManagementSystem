@@ -7,9 +7,9 @@
 <body>
 <div align="center">
     <h1>Lista de Usuários</h1>
-    <a th:href = "@{/formNewUser}">Adicionar novo usuário</a>
+    <a th:href="@{/formNewUser}">Adicionar novo usuário</a>
     <br/><br/>
-    <table border="1" cellpadding="10">o
+    <table border="1" cellpadding="10">
         <thead>
         <tr>
             <th>User ID</th>
@@ -28,11 +28,32 @@
             <td th:text="${user.empresa}">Made in</td>
             <td th:text="${user.telefone}">Price</td>
             <td><a th:href="@{/formUpdate/{id}(id=${user.id})}" class="btn btn-primary">Atualizar</a>
-            <a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-danger">Deletar</a> </td>
-
+                <a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-danger">Deletar</a></td>
         </tr>
         </tbody>
     </table>
+    <div th:if="${totalPages > 1}">
+        <div class="row col-sm-10">
+            <div class="col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class="col-sm-1">
+            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+      <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+      <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+            </span>
+            </div>
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Sistema de Cadastro de Usuário</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body>
-    <div>
-        <h1>Sistema de cadastro</h1>
-        <hr>
-        <h2>Salvar Usuário</h2>
-        <form action="#" th:action="@{/saveUser}" th:object = "${user}"
-              method="post">
-            <input type="text" th:field="*{nome}" placeholder="Nome Completo">
+<div>
+    <h1>Sistema de cadastro</h1>
+    <hr>
+    <h2>Salvar Usuário</h2>
+    <form action="#" th:action="@{/saveUser}" th:object="${user}"
+          method="post">
+        <input type="text" th:field="*{nome}" placeholder="Nome Completo">
 
-            <input type="text" th:field="*{email}" placeholder="Email">
+        <input type="text" th:field="*{email}" placeholder="Email">
 
-            <input type="text" th:field="*{empresa}" placeholder="Empresa">
+        <input type="text" th:field="*{empresa}" placeholder="Empresa">
 
-            <input type="text" th:field="*{telefone}" placeholder="Telefone">
+        <input type="text" th:field="*{telefone}" placeholder="Telefone">
 
-            <button type="submit">Criar Usuário</button>
-        </form>
-    </div>
+        <button type="submit">Criar Usuário</button>
+    </form>
+</div>
 </body>
 </html>

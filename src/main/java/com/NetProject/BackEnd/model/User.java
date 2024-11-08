@@ -33,5 +33,4 @@ public class User {
     private String telefone;
 
 
-
 }

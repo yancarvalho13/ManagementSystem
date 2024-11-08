@@ -4,6 +4,9 @@ import com.NetProject.BackEnd.model.User;
 import com.NetProject.BackEnd.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return  userRepository.findAll();
+        return userRepository.findAll();
     }
 
     @Override
@@ -29,10 +32,10 @@ public class UserServiceImpl implements UserService {
     public User getUserById(long id) {
         Optional<User> optional = userRepository.findById(id);
         User user = null;
-        if(optional.isPresent()){
+        if (optional.isPresent()) {
             user = optional.get();
-        }else{
-            throw new RuntimeException("Usuário não encontrado para id: "+ id);
+        } else {
+            throw new RuntimeException("Usuário não encontrado para id: " + id);
         }
         return user;
     }
@@ -40,6 +43,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<User> findPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.userRepository.findAll(pageable);
     }
 
 
